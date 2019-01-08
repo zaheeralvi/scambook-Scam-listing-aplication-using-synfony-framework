@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Scam Gallery{% endblock %}</title>
+    <link rel="stylesheet" href='{{ asset('assets/css/bootstrap.min.css') }}'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href='{{ asset('assets/css/style.css') }}'>
+    {% block stylesheets %}
+        <style>
+            @media (min-width: 768px){
+                .navbar {
+                    border-radius: 0;
+                }
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <nav class="navbar navbar-inverse sticky">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('base_homepage') }}">Scambook</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('scam_post') }}" class="navbar_btn_compliant">Submit a Complaint</a></li>
+                    {% if app.user %}
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-user"></span> Logout</a>
+                        </li>
+                    {% endif %}
+                    {% if not app.user %}
+                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
+<script src='{{ asset('assets/js/bootstrap.min.js') }}'></script>
+<script src='{{ asset('assets/js/jquery.js') }}'></script>
+</body>
+</html>

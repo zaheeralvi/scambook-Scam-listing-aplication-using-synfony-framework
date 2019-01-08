@@ -1,0 +1,91 @@
+{% extends 'SonataAdminBundle::layout2.html.twig' %}
+{% block sonata_page_content %}
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>User Information</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                            <div class="profile_img">
+                                <div id="crop-avatar">
+                                    <!-- Current avatar -->
+                                    <img class="img-responsive avatar-view" src="{% if user.profileImage %}{{ user.profileImage.name }}{% else %}https://dummyimage.com/400x450/000/fff{% endif %}" alt="Avatar" title="Change the avatar">
+                                </div>
+                            </div>
+                            <h3>{{ user.firstName }}</h3>
+
+                            <ul class="list-unstyled user_data">
+                                <li><i class="fa fa-envelope"></i> {{ user.email }}</li>
+                                <li><i class="fa fa-user"></i> {{ user.firstName }}</li>
+                            </ul>
+
+                            <br>
+
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="x_content">
+
+                                <div class="col-sm-12">
+                                    <h3>Logs</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Action</th>
+                                            <th>On</th>
+                                            <th>Logged Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>66</td>
+                                            <td>CREATE</td>
+                                            <td>ORDER</td>
+                                            <td>25-02-2016</td>
+                                        </tr>
+                                        <tr>
+                                            <td>66</td>
+                                            <td>CREATE</td>
+                                            <td>ORDER</td>
+                                            <td>25-02-2016</td>
+                                        </tr>
+                                        <tr>
+                                            <td>66</td>
+                                            <td>CREATE</td>
+                                            <td>ORDER</td>
+                                            <td>25-02-2016</td>
+                                        </tr>
+                                        <tr>
+                                            <td>66</td>
+                                            <td>CREATE</td>
+                                            <td>ORDER</td>
+                                            <td>25-02-2016</td>
+                                        </tr>
+                                        <tr>
+                                            <td>66</td>
+                                            <td>CREATE</td>
+                                            <td>ORDER</td>
+                                            <td>25-02-2016</td>
+                                        </tr>
+                                        <tr>
+                                            <td>66</td>
+                                            <td>CREATE</td>
+                                            <td>ORDER</td>
+                                            <td>25-02-2016</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{#{% extends "FOSUserBundle::layout.html.twig" %}#}
+{% block stylesheets %}
+    <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block fos_user_content %}
+    {#<link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet" type="text/css"/>#}
+    <body class="login">
+<div>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <h1>Login</h1>
+                    {% if error %}
+                        <div class="panel panel-danger"><div class="panel-heading">
+                                {{ error|trans({}, 'FOSUserBundle') }}
+                                {#Invalid Password or Username#}
+                            </div></div>
+                    {% endif %}
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% for message in messages %}
+                            <div class="{{ type }}">
+                                {{ message|trans({}, 'FOSUserBundle') }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    <div>
+                        {#<label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>#}
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Email" class="form-control" style="padding: 8px;"/>
+                    </div>
+                    <div>
+                        {#<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>#}
+                        <input type="password" id="password" name="_password" required="required" placeholder="Password" class="form-control" style="padding: 8px;"/>
+                    </div>
+                    <div class="text-left" style="text-align: left !important;">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                    </div>
+                    <div class="row text-center" style="width: 30%;position:absolute;right:50">
+                        <input type="submit" id="_submit" style="width: 100%" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-default submit pull-right" />
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+    </body>
+{% endblock fos_user_content %}

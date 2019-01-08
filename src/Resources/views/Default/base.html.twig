@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Scam Gallery{% endblock %}</title>
+    {#<link rel="stylesheet" href='../../../../public/css/style.css'>#}
+    {#<link rel="stylesheet" href='../../../../public/css/bootstrap.min.css'>#}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <style>
+            @media (min-width: 768px){
+                .navbar {
+                    border-radius: 0;
+                }
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <nav class="navbar navbar-inverse sticky">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Scambook</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Submit a Complaint</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
+<script src='../../../../public/vendors/bootstrap/dist/js/bootstrap.min.js'></script>
+<script src='../../../../public/vendors/jquery/dist/jquery.js'></script>
+</body>
+</html>

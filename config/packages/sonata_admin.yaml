@@ -1,0 +1,16 @@
+sonata_admin:
+    title: 'Scambook'
+    title_logo: images/logo.png
+    templates:
+#        layout: SonataAdminBundle::layout2.html.twig
+    dashboard:
+        blocks:
+            - { type: sonata.admin.block.admin_list, position: left }
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.block.service.text: ~
+        app.block.dashboard: ~

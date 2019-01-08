@@ -1,0 +1,27 @@
+ngs_locale:
+    path:     /locale/{_locale}
+    defaults: { _controller: App:WsbBundle\Default:locale }
+base_homepage:
+    path:     /
+    defaults: { _controller: App:WsbBundle\Default:index }
+mypage:
+    path:     /mypage
+    defaults: { _controller: App:WsbBundle\Default:mypage }
+scam_details:
+    path:     /scam/details
+    defaults: { _controller: App:WsbBundle\Default:scam_details }
+check_access_page:
+    path:     /check_access
+    defaults: { _controller: App:WsbBundle\Default:checkAccess }
+customer_profile:
+    path:     /admin/customer/{id}/profile
+    defaults: { _controller: App:WsbBundle\Default:customerProfile }
+scam_post:
+    path:     /scam/post
+    defaults: { _controller: App:WsbBundle\Default:scamPost }
+view_user_profile:
+    path:     /admin/user/{id}/view
+    defaults: { _controller: App:WsbBundle\Default:userProfile }
+comment_home:
+    path:     /comment-home
+    defaults: { _controller: App:WsbBundle\Default:commentHome }

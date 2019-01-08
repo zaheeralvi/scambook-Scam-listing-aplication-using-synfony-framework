@@ -1,0 +1,9 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+blog_list:
+    path:      /
+    controller: App\Controller\WsbBundle\DefaultController::listAction

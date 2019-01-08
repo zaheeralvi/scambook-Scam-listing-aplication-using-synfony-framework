@@ -1,0 +1,124 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\User" table="fos_user" repository-class="App\Repository\UserRepository">
+        <indexes>
+            <!--<index name="IDX_957A6479708A0E0" columns="gender_id"/>-->
+            <!--<index name="IDX_957A6479C54C8C93" columns="type_id"/>-->
+            <!--<index name="IDX_957A64798E0E3CA6" columns="user_role_id"/>-->
+            <!--<index name="index8" columns="profile_image"/>-->
+            <!--<index name="index9" columns="cover_image"/>-->
+            <!--<index name="user_route" columns="user_route"/>-->
+            <!--<index name="vhiecle_id" columns="vhiecle_id"/>-->
+            <!--<index name="designation_id" columns="designation_id"/>-->
+            <!--<index name="report_user_id" columns="report_user_id"/>-->
+        </indexes>
+        <unique-constraints>
+            <unique-constraint name="UNIQ_957A647992FC23A8" columns="username_canonical"/>
+            <unique-constraint name="UNIQ_957A6479A0D96FBF" columns="email_canonical"/>
+        </unique-constraints>
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="firstName" type="string" column="first_name" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="lastName" type="string" column="last_name" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="salesmanName" type="string" column="salesman_name" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="dob" type="date" column="dob" nullable="true"/>
+        <field name="age" type="decimal" column="age" precision="10" scale="0" nullable="true"/>
+        <field name="address1" type="text" column="address_1" length="65535" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="address2" type="text" column="address_2" length="65535" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="curAddress" type="text" column="cur_address" length="65535" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="city" type="string" column="city" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="state" type="string" column="state" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="country" type="text" column="country" length="65535" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="description" type="text" column="description" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="userStatus" type="boolean" column="user_status" nullable="true"/>
+        <field name="facebookId" type="string" column="facebook_id" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="twitterId" type="string" column="twitter_id" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="googleplusId" type="string" column="googleplus_id" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="postalCode" type="string" column="postal_code" length="11" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="others" type="text" column="others" length="65535" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="longitude" type="decimal" column="longitude" precision="18" scale="15" nullable="true"/>
+        <field name="latitude" type="decimal" column="latitude" precision="18" scale="15" nullable="true"/>
+        <field name="createdDate" type="date" column="created_date" nullable="true"/>
+        <field name="modifiedDate" type="date" column="modified_date" nullable="true"/>
+        <field name="updatedAt" type="datetime" column="updated_at" nullable="true"/>
+        <field name="confirmationCode" type="string" column="confirmation_code" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="language" type="string" column="language" length="25" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+
+        <field name="contactNo" type="string" column="contact_no" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+
+    </entity>
+</doctrine-mapping>

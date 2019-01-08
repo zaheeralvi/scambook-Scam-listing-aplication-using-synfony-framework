@@ -1,0 +1,49 @@
+services:
+   sonata.admin.comments:
+        class: App\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Scam Management", label: Comment , icon: "<i class='fa fa-cubes'></i>" }
+        arguments:
+            - ~
+            - App\Entity\Comment
+            - ~
+        calls:
+            - [ setTranslationDomain, [App]]
+ ####Company ADMIN######
+   sonata.admin.company:
+           class: App\Admin\CompanyAdmin
+           tags:
+               - { name: sonata.admin, manager_type: orm, group: "Scam Management", label: Company , icon: "<i class='fa fa-cubes'></i>" }
+           arguments:
+               - ~
+               - App\Entity\Company
+               - ~
+           calls:
+               - [ setTranslationDomain, [App]]
+   sonata.admin.scamdetails:
+           class: App\Admin\ScamDetailsAdmin
+           tags:
+               - { name: sonata.admin, manager_type: orm, group: "Scam Management", label: Scam Details , icon: "<i class='fa fa-cubes'></i>" }
+           arguments:
+               - ~
+               - App\Entity\ScamDetails
+               - ~
+           calls:
+               - [ setTranslationDomain, [App]]
+  ####USER ADMIN######
+   sonata.admin.user:
+          class: App\Admin\UserAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Users Management", label: Users , icon: "<i class='fa fa-users'></i>" }
+          arguments: # [null, App\Entity\User, App:UserAdmin]
+              - ~
+              - App\Entity\User
+              - ~
+          calls:
+              - [ setTranslationDomain, [App]]
+#   app.twig_extension:
+#           class: App\Twig\AppExtension
+#           public: false
+#           tags:
+#               - { name: twig.extension }
+#           arguments: ["@service_container"]

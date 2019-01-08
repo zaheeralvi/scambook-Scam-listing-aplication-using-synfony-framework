@@ -1,0 +1,48 @@
+{% extends '@SonataAdmin/CRUD/base_edit.html.twig' %}
+{% block form %}
+
+    {{ parent() }}
+    {% set var = '#sonata-ba-field-container-'~admin.uniqid~'_LatLng' %}
+    <style>
+        /*.sonata-ba-collapsed-fields:first-child{*/
+        /*display: none;*/
+        /*}*/
+        {##sonata-ba-field-container-{{ admin.uniqid }}_name {#}
+            /*display: none !important;*/
+        /*}*/
+
+        .gmap {
+            max-height: 250px !important;
+        }
+
+        @media (max-width: 1200px) {
+            {{ var }} {
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+        }
+        {{ var }} .control-label{
+            display: none;
+        }
+    </style>
+    <script>
+        $('#sonata-ba-field-container-{{ admin.uniqid }}_name').closest('.sonata-ba-collapsed-fields').css({'width': '50%'});
+        $('.customCheckBoxes').closest('.sonata-ba-collapsed-fields').css({'width': '50%'});
+        $('#sonata-ba-field-container-{{ admin.uniqid }}_LatLng').css({
+            'width': '40%',
+            'height': '330px',
+            'position': 'absolute',
+            'top': '65px',
+            'left': '58%'
+        });
+        $('#{{ admin.uniqid }}_address').change(function () {
+//            s5b10123683e88_address
+
+            $('#{{ admin.uniqid }}_LatLng_latlng_input').val($(this).val());
+            $('#{{ admin.uniqid }}_LatLng_latlng_search_button').trigger('click');
+        });
+    </script>
+{% endblock %}

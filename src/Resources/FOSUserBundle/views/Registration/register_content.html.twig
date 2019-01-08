@@ -1,0 +1,16 @@
+<link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet" type="text/css"/>
+<body class="login">
+<div>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+<form action="{{ path('fos_user_registration_register') }}"  method="POST" class="fos_user_registration_register">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+    <input type="hidden" name="_target_path" value="/login" />
+</form>
+                </section></div></div>
+    </div>
+</body>

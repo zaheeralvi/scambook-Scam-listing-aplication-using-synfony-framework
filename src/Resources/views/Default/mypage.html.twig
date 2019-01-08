@@ -1,0 +1,114 @@
+{% include 'base.html.twig' %}
+{% block body %}
+    <div class="main_page clearfix">
+        <div class="container">
+            <div class="mypage_board clearfix">
+                <a href="{{ path('scam_post') }}" class="btn btn-primary pull-right">Submit new Scam</a>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <div class="aside_left">
+                        <h4><a href="{{ path('base_homepage') }}"><strong>home</strong></a></h4>
+                        <a href="javascript:void(0)" class="scamer_toogler">Your Posts</a>
+                        <div id="top_scamer" class="top_scamer">
+                            <ul class="aside_list">
+                                {% for k,scam in scamsByCompany %}
+                                    {%  if  loop.index<6 %}
+                                    <li><a href="{{ path('scam_details') }}?name={{ scam.company.name }}"><span class="badge">{{ scam|length }}</span> {{ scam.company.name }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <div class="scam_listing_block">
+                        <ul class="scam_listing">
+                            {% if scamsByCompany|length>0 %}
+                            {% for scam in scamsByCompany %}
+                                <li class="clearfix">
+                                    <div class="media status">
+                                        <h6>Status:&nbsp;<strong class="user"> {{ scam.status | capitalize }}</strong></h6>
+                                    </div>
+                                    <div class="media card_listing">
+                                        <div class="media-left">
+                                            <img src='{{ asset("assets/scam-placeholder.png") }}' class="media-object" style="width:60px">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{ scam.company.name }}</h4>
+                                            <p>Reported Damage : ${{ scam.damagePrice }}</p>
+                                        </div>
+                                    </div>
+                                    {% if scam.investigation == 0 %}
+                                        <form action="">
+                                            <input type="hidden" name="investigation" value="{{ scam.id }}">
+                                            <button type="submit" class="btn btn-default btn-xs">Apply for investigaton</button>
+                                        </form>
+                                    {% endif %}
+                                    <p class="desc">{{ scam.description }}</p>
+                                    <div class="media user">
+                                        <div class="media-left">
+                                            <img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6><strong class="user">user</strong><strong class="date"> Posted:&nbsp;{{ scam.DateOccurance | date }}</strong>
+                                                <a href="javascript:void(0)" class="comment">Comment</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                <div class="all_comments">
+                                    {% if commentsByPostId[scam.id] is defined %}
+                                    {% for comment in commentsByPostId[scam.id] %}
+                                        <div class="media card_listing">
+                                            <div class="media-left">
+                                                <img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">
+                                            </div>
+                                            <div class="media-body">
+                                                <h6><strong class="user">{{ comment.user }}</strong><strong class="date">{{ comment.date | date }}</strong></h6>
+                                            </div>
+                                            <p>{{ comment.commentDetail }}</p>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% if app.user %}
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="post_id" value="{{ scam.id }}">
+                                            <div class="comment_block">
+                                                <textarea class="form-control" name="comment" id="comment" cols="30" rows="5" placeholder="Please Enter Your Suggestion about this post"></textarea>
+                                                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                            </div>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            {% endfor %}
+                            {% else %}
+                                No Scam found
+                            {% endif %}
+                            {% if not app.user %}
+                                <h3>Please login to view your posts</h3>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>All Rights are Reserved  &copy;  2018</p>
+        </div>
+    </footer>
+{% endblock %}
+<script>
+    $(".scamer_toogler").click(function(){
+        $(".top_scamer").slideToggle();
+    });
+    $(".comment").click(function(){
+        console.log('comment btn working');
+        $(this).closest('li').find(".all_comments").slideToggle();
+//                    $(".comment_block").slideToggle();
+    });
+</script>
+{% block javascripts %}
+{% endblock %}

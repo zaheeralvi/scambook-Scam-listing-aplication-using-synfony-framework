@@ -1,0 +1,200 @@
+{% include 'base.html.twig' %}
+{% block body %}
+    <div class="main_page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <div class="aside_left">
+                        <h4><a href="{{ path('base_homepage') }}"><strong>home</strong></a></h4>
+                        <a href="javascript:void(0)" class="scamer_toogler">View Top Scammers</a>
+                        <div id="top_scamer" class="top_scamer">
+                            <ul class="aside_list">
+                                {% for k,s in scamsByCompanys %}
+                                    <li><a href="{{ path('scam_details') }}?name={{ k }}"><span class="badge">{{ s|length }}</span> {{ k }}</a></li>
+                                {% endfor %}
+                                {#<li><a href="#"><span class="badge">4</span> samsung</a></li>#}
+                                {#<li><a href="#"><span class="badge">3</span> sony</a></li>#}
+                                {#<li><a href="#"><span class="badge">2</span> apple</a></li>#}
+                                {#<li><a href="#"><span class="badge">1</span> rivo</a></li>#}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <div class="scam_listing_block">
+                        <ul class="scam_listing">
+                            <li>
+                                <div class="media card_listing">
+                                    <div class="media-left media-middle">
+                                        <img src='{{ asset("assets/scam-placeholder.png") }}' class="media-object" style="width:60px">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ company.name }}</h4>
+                                        <p class="phone"><span class="glyphicon glyphicon-phone">&nbsp;</span>&nbsp;{{ company.phone }}</p>
+                                        <p class="email"><span class="glyphicon glyphicon-envelope">&nbsp;</span>&nbsp;{{ company.email }}</p>
+                                    </div>
+                                </div>
+                                <p class="desc">
+                                    {{ company.description }}
+                                </p>
+                            </li>
+
+                            {% for scam in scamsByCompany %}
+                             <li>
+                                <h3>Reported Damage : {{ scam.damagePrice }}</h3>
+                                <p class="desc">
+                                    {{ scam.description }}
+                                </p>
+                                <div class="media user">
+                                    <div class="media-left">
+                                        <img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6><strong class="user">user</strong><strong class="date"> Posted:11/04/2018</strong>
+                                            <a href="javascript:void(0)" class="comment">Comment</a>
+                                            {#<a class="pull-right related">5 Related Reports</a>#}
+                                        </h6>
+                                    </div>
+                                    <div class="all_comments">
+                                        {% if commentsByPostId[scam.id] is defined %}
+                                        {% for comment in commentsByPostId[scam.id] %}
+                                        <div class="media card_listing">
+                                            <div class="media-left">
+                                                <img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">
+                                            </div>
+                                            <div class="media-body">
+                                                <h6><strong class="user">{{ comment.user }}</strong><strong class="date">{{ comment.date | date }}</strong></h6>
+                                            </div>
+                                            <p>{{ comment.commentDetail }}</p>
+                                            {% endfor %}
+                                            {% endif %}
+                                            {% if app.user %}
+                                                <form action="" method="POST">
+                                                    <input type="hidden" name="post_id" value="{{ scam.id }}">
+                                                    <div class="comment_block">
+                                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="5" placeholder="Please Enter Your Suggestion about this post"></textarea>
+                                                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        {% endif %}
+                                </div>
+                            </li>
+
+                            {% endfor %}
+                            {#<li>#}
+                                {#<h3>Reported Damage : $7,000.00</h3>#}
+                                {#<p class="desc">Top Fence company Ltd china going to scam they are not delivered a product.#}
+                                    {#They steal all of your valuable money. Now here I explained what happen to me. Recently I bought 150 dog runs from this comp…</p>#}
+                                {#<div class="media user">#}
+                                    {#<div class="media-left">#}
+                                        {#<img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">#}
+                                    {#</div>#}
+                                    {#<div class="media-body">#}
+                                        {#<h6><strong class="user">Ralf</strong><strong class="date"> Posted:11/04/2018</strong>#}
+                                            {#<a href="javascript:void(0)" class="comment">Comment</a>#}
+                                            {#<a class="pull-right related">5 Related Reports</a>#}
+                                        {#</h6>#}
+                                    {#</div>#}
+                                    {#<div class="all_comments">#}
+                                        {#<div class="media card_listing">#}
+                                            {#<div class="media-left">#}
+                                                {#<img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">#}
+                                            {#</div>#}
+                                            {#<div class="media-body">#}
+                                                {#<h6><strong class="user">john doe</strong><strong class="date"> 11 Mar 2018</strong></h6>#}
+                                            {#</div>#}
+                                            {#<p>yeah you are right</p>#}
+                                        {#</div>#}
+                                        {#<div class="comment_block">#}
+                                            {#<textarea class="form-control" name="comment" id="comment" cols="30" rows="5" placeholder="Please Enter Your Suggestion about this post"></textarea>#}
+                                            {#<a href="javscript;void(0)" class="btn btn-primary pull-right">Submit</a>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</li>#}
+                            {#<li>#}
+                                {#<h3>Reported Damage : $7,000.00</h3>#}
+                                {#<p class="desc">Top Fence company Ltd china going to scam they are not delivered a product.#}
+                                    {#They steal all of your valuable money. Now here I explained what happen to me. Recently I bought 150 dog runs from this comp…</p>#}
+                                {#<div class="media user">#}
+                                    {#<div class="media-left">#}
+                                        {#<img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">#}
+                                    {#</div>#}
+                                    {#<div class="media-body">#}
+                                        {#<h6><strong class="user">Ralf</strong><strong class="date"> Posted:11/04/2018</strong>#}
+                                            {#<a href="javascript:void(0)" class="comment">Comment</a>#}
+                                            {#<a class="pull-right related">5 Related Reports</a>#}
+                                        {#</h6>#}
+                                    {#</div>#}
+                                    {#<div class="all_comments">#}
+                                        {#<div class="media card_listing">#}
+                                            {#<div class="media-left">#}
+                                                {#<img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">#}
+                                            {#</div>#}
+                                            {#<div class="media-body">#}
+                                                {#<h6><strong class="user">john doe</strong><strong class="date"> 11 Mar 2018</strong></h6>#}
+                                            {#</div>#}
+                                            {#<p>yeah you are right</p>#}
+                                        {#</div>#}
+                                        {#<div class="comment_block">#}
+                                            {#<textarea class="form-control" name="comment" id="comment" cols="30" rows="5" placeholder="Please Enter Your Suggestion about this post"></textarea>#}
+                                            {#<a href="javscript;void(0)" class="btn btn-primary pull-right">Submit</a>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</li>#}
+                            {#<li>#}
+                                {#<h3>Reported Damage : $7,000.00</h3>#}
+                                {#<p class="desc">Top Fence company Ltd china going to scam they are not delivered a product.#}
+                                    {#They steal all of your valuable money. Now here I explained what happen to me. Recently I bought 150 dog runs from this comp…</p>#}
+                                {#<div class="media user">#}
+                                    {#<div class="media-left">#}
+                                        {#<img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">#}
+                                    {#</div>#}
+                                    {#<div class="media-body">#}
+                                        {#<h6><strong class="user">Ralf</strong><strong class="date"> Posted:11/04/2018</strong>#}
+                                            {#<a href="javascript:void(0)" class="comment">Comment</a>#}
+                                            {#<a class="pull-right related">5 Related Reports</a>#}
+                                        {#</h6>#}
+                                    {#</div>#}
+                                    {#<div class="all_comments">#}
+                                        {#<div class="media card_listing">#}
+                                            {#<div class="media-left">#}
+                                                {#<img src='{{ asset("assets/user-placeholder.png") }}' class="media-object user_placeholder">#}
+                                            {#</div>#}
+                                            {#<div class="media-body">#}
+                                                {#<h6><strong class="user">john doe</strong><strong class="date"> 11 Mar 2018</strong></h6>#}
+                                            {#</div>#}
+                                            {#<p>yeah you are right</p>#}
+                                        {#</div>#}
+                                        {#<div class="comment_block">#}
+                                            {#<textarea class="form-control" name="comment" id="comment" cols="30" rows="5" placeholder="Please Enter Your Suggestion about this post"></textarea>#}
+                                            {#<a href="javscript;void(0)" class="btn btn-primary pull-right">Submit</a>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</li>#}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>All Rights are Reserved  &copy;  2018</p>
+        </div>
+    </footer>
+{% endblock %}
+<script>
+    $(".scamer_toogler").click(function(){
+        $(".top_scamer").slideToggle();
+    });
+    $(".comment").click(function(){
+        $(this).closest('.user').find(".all_comments").slideToggle();
+//                    $(".comment_block").slideToggle();
+    });
+</script>
+{% block javascripts %}
+{% endblock %}

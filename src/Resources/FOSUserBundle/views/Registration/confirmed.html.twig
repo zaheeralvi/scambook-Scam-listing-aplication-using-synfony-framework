@@ -1,0 +1,11 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="text-center success_block">
+        <h1 class="text-white" style="padding-top: 100px">{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</h1>
+    {% if app.session is not empty %}
+        {% set targetUrl =  path('base_homepage') %}
+        {% if targetUrl is not empty %}<p><a href="{{ path('base_homepage') }}">Go to Home Page</a></p>{% endif %}
+    {% endif %}
+    </div>
+{% endblock fos_user_content %}

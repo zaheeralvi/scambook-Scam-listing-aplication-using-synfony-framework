@@ -1,0 +1,200 @@
+.scam_banner{
+    background: url('../bannerbg.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 500px;
+    padding-top: 100px;
+    margin-top: 50px;
+}
+.scam_banner .btn{
+    background-color: #089a9a;
+    border-color: #1ea7a7;
+    box-shadow: 3px 2px 20px 11px #fff;
+    transition: all .3s;
+}
+.scam_banner .btn:hover , .scam_banner .btn:focus{
+    background-color: #0d5454;
+    border-color: #0d5454;
+}
+.main_page{
+    padding: 90px 0;
+}
+.navbar{
+    margin: 0 !important;
+}
+.navbar-inverse{
+    background-color: rgb(3, 173, 173) !important;
+    border-color: rgb(3, 173, 173) !important;
+    box-shadow: 0px 2px 20px 0px #383030;
+}
+.navbar-inverse .navbar-nav>li>a,.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:focus, 
+.navbar-inverse .navbar-nav>.active>a:hover{
+    background: transparent;
+    color: #fff !important;
+}
+.navbar-inverse .navbar-nav>a:focus, .navbar-inverse .navbar-nav>a:hover{
+    background: rgba(0, 0, 0, 0.13);
+}
+/*.navbar_btn_compliant{*/
+    /*border:1px solid #000000;*/
+    /*border-radius: 5px;*/
+    /*padding: 5px 10px;*/
+/*}*/
+/*.navbar_btn_compliant{*/
+    /*background: #444;*/
+/*}*/
+.sticky {
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
+.scam_listing{
+    list-style: none;
+    padding-left: 0;
+}
+.scam_listing li{
+    transition: all .5s;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.scam_listing li:last-child{
+    margin-bottom: 0;
+}
+.scam_listing li:hover,.scam_listing li:focus{
+    box-shadow: 0px 2px 25px #dadada;
+    padding: 20px;
+}
+.scam_listing li .desc{
+    font-size: 15px;
+    padding: 20px 0 0 10px;
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    margin: 0 auto;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.scam_listing li .media.card_listing .media-heading{
+     margin-top: 10px;
+    font-weight: bold;
+ }
+.scam_listing li .media.user{
+    padding-left: 10px;
+}
+.scam_listing li .media.user .date{
+    margin-left: 15px;
+}
+.scam_listing li .media.user .related{
+    color: #25acd6;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.scam_listing li .media.user .user{
+    color: #25acd6;
+}
+.scam_listing li .media.user .comment{
+    color: #25acd6;
+    margin-left: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.scam_listing li .media.user .comment:hover , .scam_listing li .media.user .comment:focus{
+    text-decoration: none;
+}
+.user_placeholder{
+    width: 30px;
+    height: 30px;
+}
+.aside_left{
+    list-style: none;
+    padding: 20px;
+    transition: all .5s;
+    border-radius: 5px;
+    box-shadow: 0px 2px 13px 2px #e0dcdc;
+}
+.aside_left .top_scamer{
+    margin-top:10px;
+    display: none;
+}
+ul.aside_list{
+    list-style: none;
+    padding-left: 0;
+}
+ul.aside_list li {
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #2eafd8;
+}
+ul.aside_list li:last-child {
+    margin-bottom: 0;
+}
+ul.aside_list li a .title{
+    display: inline-block;
+    max-width: 160px;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.scamer_toogler{
+    color: #337ab7;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.scamer_toogler:hover,.scamer_toogler:focus{
+    text-decoration: none;
+}
+.all_comments{
+    display: none;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-left: 100px;
+    border-top: 1px solid #e0d7d7;
+}
+.comment_block{
+    margin-top:20px;
+}
+.comment_block textarea.form-control{
+    margin-bottom:20px;
+    resize: none;
+}
+.footer{
+    padding: 15px 0;
+    background: rgb(3, 173, 173)
+}
+.footer p{
+    margin: 0;
+    font-size: 15px;
+    color: #fff;
+}
+.scam_listing li .status{
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.scam_listing li .status h6{
+    margin:0;
+}
+.mypage_board{
+    padding: 30px 0;
+}
+.mypage_board .btn,.comment_block .btn{
+    background: rgb(3, 173, 173);
+    border-color: rgb(3, 173, 173);
+}
+.mypage_board .btn:hover,.comment_block .btn:focus,.mypage_board .btn:focus,.comment_block .btn:hover{
+    background: rgb(9, 146, 146);
+    border-color: rgb(9, 146, 146);
+}

@@ -1,0 +1,9 @@
+{% block lat_long_map_widget %}
+    {#{% extends "App:Form:google_maps.html.twig" %}#}
+    {% spaceless %}
+        {% include "App:form:google_maps.html.twig" %}
+    {% endspaceless %}
+{% endblock %}
+{% block qr_code_image_widget %}
+    <img src="{{ qr_code_url(data,{'writer':'png'}) }}" class="img-responsive" width="200"/>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% include 'base.html.twig' %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/chosen/chosen.jquery.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/chosen/chosen.css') }}">
+    <link rel="stylesheet" type="text/css" href="../../../../public/assets/js/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+    {% block stylesheets %}
+        <style>
+            @media (min-width: 768px){
+                .navbar {
+                    border-radius: 0;
+                }
+            }
+        </style>
+    {% endblock %}
+{% block body %}
+
+<div class="contact1">
+    <div class="container-contact1">
+        <div class="contact1-pic js-tilt" data-tilt>
+            <img src="{{ asset('images/img-01.png') }}" alt="IMG">
+        </div>
+
+        <form class="contact1-form validate-form Scam-form" action="" method="post" enctype="multipart/form-data">
+            <span class="contact1-form-title">
+                Report a Scam
+            </span>
+
+            <div class="wrap-input1 validate-input" data-validate = "Company name is required">
+                <div class="mars_chosen_container clearfix">
+                    <select data-placeholder="Select Source Language" class="chosen-select" tabindex="1" name="company" required>
+        `                <option value="" disabled selected >Please Seelct Company</option>
+                            {% for c in companies %}
+                                <option value="{{ c.id }}">{{ c.name }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1">
+                <input class="input1 form-control" type="number" name="Damages" required placeholder="Damages">
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1">
+                <input class="input1" type="text" name="location" required placeholder="Location">
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1">
+                <input class="input1" type="date" required name="date" placeholder="date">
+                <span class="shadow-input1"></span>
+            </div>
+            <div class="wrap-input1">
+                <textarea class="input1" name="detail" required placeholder="Scam Details"></textarea>
+                <span class="shadow-input1"></span>
+            </div>
+             <div class="container-contact1-form-btn">
+                <button type="submit" class="contact1-form-btn">
+                    <span>Submit</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="{{ asset('assets/js/tilt.jquery.min.js') }}"></script>
+<script src="{{ asset('assets/chosen/chosen.jquery.min.js') }}"></script>
+<script src="{{ asset('assets/jquery-validation/dist/jquery.validate.js') }}"></script>
+<script>
+    $(".Scam-form").validate({
+        rules: {
+            Damages: {
+                required:true,
+            },
+            location: {
+                required:true,
+            },
+            date: {
+                required:true,
+            },
+            detail: {
+                required:true,
+            },
+            company: {
+                required:true,
+            }
+        },
+        messages: {
+            Damages: {
+                required:'Please enter Damages in USD',
+            },
+            location: {
+                required:'Please enter location',
+            },
+            date: {
+                required:'Please enter date of scam',
+            },
+            detail: {
+                required:'Please enter details of scam',
+            },
+            company: {
+                required:'Please Select Company name',
+            }
+        }
+    });
+</script>
+{#<script src="{{ asset('assets/js/main.js') }}"></script>#}
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-23581568-13');
+
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+
+    var config = {
+        '.chosen-select'           : {},
+        '.chosen-select-deselect'  : {allow_single_deselect:true},
+        '.chosen-select-no-single' : {disable_search_threshold:10},
+        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+        '.chosen-select-width'     : {width:"1%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+
+</script>
